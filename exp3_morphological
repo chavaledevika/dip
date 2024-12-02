@@ -1,0 +1,35 @@
+import cv2
+import numpy as np
+from google.colab.patches import cv2_imshow
+img=cv2.imread('/content/drive/MyDrive/binary .bmp')
+print('original image')
+cv2_imshow(img)
+
+1.Dilation
+CODE:
+kernel1 = np.ones((5, 5),np.uint8)
+img_dilation = cv2.dilate(img, kernel1, iterations=1)
+print("dilated image")
+cv2_imshow(img_dilation)
+
+2. Erosion
+CODE:
+kernel2 = np.ones((5, 5),np.uint8)
+img_erosion = cv2.erode(img, kernel2, iterations=1)
+print("eroded image")
+cv2_imshow(img_erosion)
+
+3.Opening image
+CODE:
+kernel3 = np.ones((7,7),np.uint8)
+opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel3)
+print("opened image")
+cv2_imshow(opening)
+
+4. Closing Image
+
+CODE:
+kernel4 = np.ones((30, 30),np.uint8)
+closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel4)
+print("closed image")
+cv2_imshow(closing)
