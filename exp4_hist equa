@@ -1,0 +1,43 @@
+A] Image equalization
+clc;
+close all;
+clear all;
+figure(1);
+A=imread('PG1.BMP');
+subplot(2,2,1);
+imshow(A);
+title('original image');
+figure(1);
+B=imhist(A);
+subplot(2,2,3);
+stem(B);
+title('histogram of original image');
+figure(1);
+C=histeq(A);
+subplot(2,2,2);
+imshow(C);
+title('equalized image');
+figure(1);
+D=imhist(C);
+subplot(2,2,4);
+stem(D);
+title('histogram of equalized image');
+
+B] DCT of an Image
+clc;
+close all;
+clear all;
+figure(2);
+A=imread('ELIZA.bmp');
+subplot(2,2,1);
+imshow(A);
+title('original image');
+B=im2double(A);
+C=dct2(B);
+subplot(2,2,2);
+imshow(C);
+title('DCT of eliza');
+D=idct2(C);
+subplot(2,2,3);
+imshow(D);
+title('IDCT image');
