@@ -1,0 +1,60 @@
+clc;
+close all;
+clear all;
+figure(1);
+A=imread(‘ELIZA.bmp’);
+subplot(2,3,1);
+imshow(A);
+title(‘original image’);
+B = imnoise(A,'salt &amp; pepper',0.02);
+subplot(2,3,2);
+imshow(B);
+title(‘noisy imagew’);
+BF=[1/9]*[1,1,1;
+1,1,1;
+e;]
+Ca=imfilter(B,BF);
+subplot(2,3,3);
+imshow(C);
+title(‘box filtered image’);
+E=[1/16]*[1,2,1;
+2,4,2;
+1,2,1;]
+D=imfilter(B,E);
+subplot(2,3,4);
+imshow(D);
+title(‘weighted avg filter’);
+F=medfilt2(B);
+subplot(2,3,5);
+imshow(F);
+title(‘median filter’);
+G=[-1,-1,-1;
+-1,8,-1;
+-1,-1,-1;]
+H=imfilter(A,G);
+subplot(2,3,6);
+imshow(H);
+title(‘laplacian filter’);
+figure(2);
+A=imread(‘ELIZA.bmp’);
+subplot(2,3,1);
+imshow(A);
+title(‘original image’);
+G=[-1,-2,-1;
+0,0,0;
+1,2,1;]
+Gx=imfilter(A,G);
+subplot(2,3,2);
+imshow(Gx);
+title(‘Gx sobel filter’);
+H=[-1,0,1;
+-2,0,2;
+-1,0,1;]
+Gy=imfilter(A,H);
+subplot(2,3,3);
+imshow(Gy);
+title(‘Gy sobel filter’);
+Z=imadd(Gx,Gy);
+subplot(2,3,4);
+imshow(Z);
+title(‘added image’);
