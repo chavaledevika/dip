@@ -1,0 +1,37 @@
+clc;
+close all;
+clear all;
+figure(1);
+%show the original image
+A=imread("blood.bmp");
+subplot(2,2,1);
+imshow(A);
+title("Original Image");
+%plot the hoistogram of original image
+B=imhist(A);
+subplot(2,2,2);
+stem(B);
+title("Histogram of original image");
+[M,N]=size(A);
+for x=1:1:M
+for y=1:1:N
+if 0<=A(x,y) && A(x,y)<=100
+r(x,y)=255;
+b(x,y)=0;
+g(x,y)=0;
+else if 101<=A(x,y) && A(x,y)<=180
+r(x,y)=0;
+b(x,y)=255;
+g(x,y)=0;
+else if 181&<=A(x,y) && A(x,y)<=255
+r(x,y)=0;
+b(x,y)=0;
+g(x,y)=255;
+end
+end
+end
+end
+end
+final=cat(3,r,g,b);
+subplot(2,2,3);
+imshow(final);
